@@ -24,7 +24,7 @@ export async function addTask(title, description) {
 export async function getLatestTask(){
   const Latesttasks = await prisma.task.findMany({
   orderBy: {
-    id: "desc",
+    createdAt: "desc",
   },
   take: 3,
 }); 
@@ -35,7 +35,7 @@ return Latesttasks
 export async function getTasks(){
   const tasks = await prisma.task.findMany({
     orderBy:{
-      id:"desc"
+      createdAt:"desc"
     }
   });
 
