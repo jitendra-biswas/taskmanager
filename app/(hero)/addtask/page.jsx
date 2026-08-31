@@ -1,31 +1,36 @@
 "use client";
 
 import React, { useState } from "react";
-import {addTask} from "../../../app/actions/taskAction"
+import { addTask } from "../../../app/actions/taskAction";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const page = () => {
   const [TaskTitle, setTaskTitle] = useState("");
   const [TaskDescription, setTaskDescription] = useState("");
-
-  async function addTasks(e){
-      e.preventDefault()
-     await addTask(TaskTitle,TaskDescription);
-     setTaskTitle("")
-     setTaskDescription("")
-      toast.success("Task Created Successfully");
+   const router = useRouter()
+  async function addTasks(e) {
+    e.preventDefault();
+    try {
+      await addTask(TaskTitle, TaskDescription);
+         setTaskTitle("");
+    setTaskDescription("");
+      toast.success("Task created successfully!");
+      router.refresh();
+    } catch (error) {
+      toast.error("Failed to create task");
+      console.error(error);
+    }
   }
 
   return (
     <div className="w-full h-screen py-5 px-10 text-zinc-800">
-      
-      
-       <h1 className="font-medium text-3xl mt-5">Create a new task</h1>
-       <p>Create a task by adding a title and description.</p>
-      <form onSubmit={addTasks}
+      <h1 className="font-medium text-3xl mt-5">Create a new task</h1>
+      <p>Create a task by adding a title and description.</p>
+      <form
+        onSubmit={addTasks}
         className="w-[40vw] h-fit border-2 border-gray-200 mt-5 p-5 rounded-xl shadow"
       >
-
         <div className="mt-5 flex flex-col gap-3">
           <div className="task-title">
             <p className="mb-2">Task Title</p>
@@ -51,8 +56,9 @@ const page = () => {
             ></textarea>
           </div>
           <button
-          type="submit"
-           className="w-full p-2 bg-[#616ce5] hover:bg-[#525cd5] rounded-md text-white cursor-pointer active:scale-99 transition-all">
+            type="submit"
+            className="w-full p-2 bg-[#616ce5] hover:bg-[#525cd5] rounded-md text-white cursor-pointer active:scale-99 transition-all"
+          >
             Add Task
           </button>
         </div>
