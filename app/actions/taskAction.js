@@ -4,18 +4,18 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "../../lib/prisma"
 
 //Add Task
-export async function addTask(
-  title,
-  description
-) {
+export async function addTask(title, description) {
   const task = await prisma.task.create({
     data: {
       title,
       description,
     },
-  })
+  });
 
-  return task
+  revalidatePath("/");
+  revalidatePath("/alltasks");
+
+  return task;
 }
 
 
