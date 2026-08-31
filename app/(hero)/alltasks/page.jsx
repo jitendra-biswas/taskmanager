@@ -36,7 +36,7 @@ const page = async() => {
     ]
   return (
     <div className="w-full h-screen py-5 px-10 text-zinc-800">
-      <h1 className="text-2xl font-semibold">Dashboard</h1>
+      <h1 className="text-2xl font-semibold">All Tasks</h1>
       <header className="pt-5 flex gap-3">
         {dashboardCardData.map((cardData,idx)=>{
            return <Dashcard key={idx} cardData={cardData}/>
