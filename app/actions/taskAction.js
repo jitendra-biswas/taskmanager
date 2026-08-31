@@ -28,8 +28,6 @@ export async function getLatestTask(){
   },
   take: 3,
 }); 
- revalidatePath("/");
-  revalidatePath("/alltasks");
 return Latesttasks
 }
 
@@ -41,8 +39,6 @@ export async function getTasks(){
     }
   });
 
-   revalidatePath("/");
-  revalidatePath("/alltasks");
   return tasks;
 }
 //Get Completed task
@@ -52,8 +48,6 @@ export async function getCompletedTasks() {
       completed: true,
     },
   });
-   revalidatePath("/");
-  revalidatePath("/alltasks");
   return completedTasks;
 }
 //Get pending task
@@ -63,8 +57,7 @@ export async function getpendingTasks() {
       completed: false,
     },
   });
-   revalidatePath("/");
-  revalidatePath("/alltasks");
+  
   return pendingTasks;
 }
 
@@ -75,8 +68,7 @@ export async function getDataById(id){
       id:id,
     }
   });
-   revalidatePath("/");
-  revalidatePath("/alltasks");
+  
   return individualData;
 }
 
