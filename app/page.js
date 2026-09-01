@@ -1,60 +1,60 @@
-import Dashcard from "../app/Components/Dashcard"
-import { HiOutlineClipboardDocumentCheck, HiOutlineClipboardDocumentList } from 'react-icons/hi2'
-import { MdOutlinePendingActions } from 'react-icons/md'
-import TaskList from "../app/Components/TaskList"
-import {getCompletedTasks, getpendingTasks, getTasks} from '../app/actions/taskAction'
-import {getLatestTask} from '../app/actions/taskAction'
-import Link from "next/link"
-import { IoIosArrowForward } from "react-icons/io"
+import Dashcard from "../app/Components/Dashcard";
+import {
+  HiOutlineClipboardDocumentCheck,
+  HiOutlineClipboardDocumentList,
+} from "react-icons/hi2";
+import { MdOutlinePendingActions } from "react-icons/md";
+import {
+  getCompletedTasks,
+  getpendingTasks,
+  getTasks,
+} from "../app/actions/taskAction";
+import Chart from "../app/Components/Chart";
 
-const page = async() => {
+const page = async () => {
+  const tasks = await getTasks();
+  const completedTaks = await getCompletedTasks();
+  const pendingTasks = await getpendingTasks();
+  const numberOfTask = tasks.length;
+  const completed = completedTaks.length;
+  const pending = pendingTasks.length;
 
-    const tasks = await getTasks();
-    const completedTaks = await getCompletedTasks()
-    const pendingTasks = await getpendingTasks();
-    const latestTasks = await getLatestTask();
-    const numberOfTask = tasks.length;
-    const completed = completedTaks.length;
-    const pending = pendingTasks.length;
-          
-  
-   const dashboardCardData = [
-        {
-            icon: <HiOutlineClipboardDocumentList className="text-2xl text-blue-600" />,
-            title: "Total Tasks",
-            number: numberOfTask,
-            background: "bg-blue-100"
-        },
-        {
-            icon: <HiOutlineClipboardDocumentCheck  className="text-2xl text-green-600"  />,
-            title: "Completed",
-            number: completed,
-            background: "bg-green-100"
-        },
-        {
-            icon: <MdOutlinePendingActions  className="text-2xl text-cyan-600" />,
-            title: "Pending",
-            number: pending,
-            background: "bg-cyan-100"
-        },
-    ]
+  const dashboardCardData = [
+    {
+      icon: (
+        <HiOutlineClipboardDocumentList className="text-2xl text-blue-600" />
+      ),
+      title: "Total Tasks",
+      number: numberOfTask,
+      background: "bg-blue-100",
+    },
+    {
+      icon: (
+        <HiOutlineClipboardDocumentCheck className="text-2xl text-green-600" />
+      ),
+      title: "Completed",
+      number: completed,
+      background: "bg-green-100",
+    },
+    {
+      icon: <MdOutlinePendingActions className="text-2xl text-cyan-600" />,
+      title: "Pending",
+      number: pending,
+      background: "bg-cyan-100",
+    },
+  ];
   return (
     <div className="w-full h-screen py-5 px-10 text-zinc-800">
       <h1 className="text-2xl font-semibold">Dashboard</h1>
       <header className="pt-5 flex gap-3">
-        {dashboardCardData.map((cardData,idx)=>{
-           return <Dashcard key={idx} cardData={cardData}/>
+        {dashboardCardData.map((cardData, idx) => {
+          return <Dashcard key={idx} cardData={cardData} />;
         })}
       </header>
 
-       <TaskList tasks={latestTasks}/>
-
-      <div className="w-full mt-5 flex justify-center">
-         <Link href="/alltasks" className="w-fit flex items-center border px-3 py-1 rounded-full bg-gry-200 border-zinc-300 shadow-2xl hover:bg-gray-300">All Tasks <IoIosArrowForward /></Link>
-    
-      </div>
+      <Chart tasks={tasks}/>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
