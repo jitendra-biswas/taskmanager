@@ -43,13 +43,13 @@ const TaskList = ({ tasks }) => {
       <div className="tasks w-full h-fit flex flex-col gap-2">
 
         <header className="mt-3">
-          <ul className="flex w-fit border-2 border-gray-200 rounded-full">
+          <ul className="flex w-fit border-2 border-gray-300 rounded-full">
 
             {textHeaderData.map((title, idx) => (
               <li
                 key={idx}
-                className={`w-32 text-center py-1 rounded-full cursor-pointer hover:bg-gray-200 ${
-                  active === title ? "bg-gray-200" : ""
+                className={`w-32 text-center py-1 rounded-full cursor-pointer hover:bg-gray-300 ${
+                  active === title ? "bg-gray-300" : ""
                 }`}
                 onClick={() => filterTask(title)}
               >

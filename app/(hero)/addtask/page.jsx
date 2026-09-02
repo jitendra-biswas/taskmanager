@@ -24,7 +24,7 @@ const page = () => {
   }
 
   return (
-    <div className="w-full h-screen py-5 px-10 text-zinc-800">
+    <div className="w-full h-screen py-5 px-10 text-zinc-800 bg-gray-200">
       <h1 className="font-medium text-3xl mt-5">Create a new task</h1>
       <p>Create a task by adding a title and description.</p>
       <form

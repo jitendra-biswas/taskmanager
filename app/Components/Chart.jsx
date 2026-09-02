@@ -51,7 +51,7 @@ const Chart = ({ tasks = [] }) => {
   }));
 
   return (
-    <div className="w-full rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm mt-5">
+    <div className="w-full rounded-2xl border border-zinc-200 bg-gray-200 p-5 shadow-sm mt-5">
       <div className="flex w-full flex-col gap-6 lg:flex-row">
         
 

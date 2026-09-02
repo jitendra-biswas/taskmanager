@@ -31,7 +31,7 @@ async function statusHandler(id) {
 }
     
   return (
-   <div className="task h-fit p-3 border-2 border-gray-200 rounded-xl flex items-start justify-between gap-5">
+   <div className="task h-fit p-3 border-2 border-zinc-300 rounded-xl flex items-start justify-between gap-5">
             <div className="left">
               <h2 className="font-semibold">{task.title}</h2>
               <p className="text-zinc-600">

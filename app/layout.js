@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex"><Sidenav />{children} <ToastContainer   position="top-right"
+      <body className="min-h-full flex bg-gray-200"><Sidenav />{children} <ToastContainer   position="top-right"
           autoClose={3000}/> </body>
     </html>
   );

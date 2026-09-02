@@ -38,7 +38,7 @@ const ProductivityChart = ({ tasks = [] }) => {
   ];
 
   return (
-    <div className="w-[27vw] rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+    <div className="w-[27vw] rounded-2xl border border-zinc-200 bg-gray-200 p-5 shadow-sm">
 
       {/* Header */}
       <div className="flex items-center justify-between">
